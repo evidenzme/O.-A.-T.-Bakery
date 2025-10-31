@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>O.A.T. Company Ltd — Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+      <div class="inner" id="siteHeaderInner">
+        <div class="brand">
+          <img src="/assets/logo.jpg" alt="O. A. T. Company Ltd logo" />
+          <div>
+            <h1>O.A.T. Company Ltd</h1>
+            <div
+              style="font-size: 0.78rem; color: var(--muted); margin-top: 4px"
+            >
+              Adjacent KAWSEC (Nkawkaw SHS) Junction
+            </div>
+          </div>
+        </div>
+        <nav class="primary" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="#" id="openMenuHeader" class="nav-link">Menu</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a
+            href="https://wa.me/233507969291"
+            class="cta"
+            style="margin-left: 6px"
+            >Order on WhatsApp</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div
+          class="bg"
+          style="background-image: url('')"
+          aria-hidden="true"
+        ></div>
+        <div class="overlay" aria-hidden="true"></div>
+        <div class="content" id="heroContent">
+          <h2>Freshly baked<br />every morning</h2>
+          <p class="lead">
+            Trusted by Nkawkaw for over a decade · Quality bread, hygienically
+            prepared daily
+          </p>
+          <div class="actions">
+            <a class="btn primary" id="viewMenuBtnHome" href="#">View Menu</a>
+            <a class="btn ghost" href="https://wa.me/233507969291"
+              >Order on WhatsApp</a
+            >
+          </div>
+          <div
+            style="
+              margin-top: 18px;
+              color: rgba(255, 255, 255, 0.88);
+              font-size: 0.95rem;
+            "
+          >
+            <strong>Hours:</strong> Mon–Sat: 5:00 AM – 7:00 PM &nbsp;|&nbsp;
+            Sun: 5:30 AM – 6:00 PM
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="/assets/fbl.webp" alt="Fresh bread loaves" />
+        </div>
+      </section>
+
+      <div class="info-strip" id="about">
+        <div class="info-left">
+          <strong>O.A.T. Company Ltd</strong><br />Family-owned bakery serving
+          Nkawkaw — quality you can trust.
+        </div>
+        <div class="info-right">
+          Adjacent KAWSEC (Nkawkaw Senior High School) Junction
+        </div>
+      </div>
+
+      <section
+        style="
+          max-width: var(--max-width);
+          margin: 20px auto;
+          padding: 28px;
+          text-align: center;
+        "
+      >
+        <h3>Sample prototype content</h3>
+        <p style="color: var(--muted); max-width: 820px; margin: 12px auto">
+          This prototype includes clickable price variants, a manual
+          availability badge, and a lightweight cart that accumulates items
+          until you complete the order via WhatsApp.
+        </p>
+      </section>
+    </main>
+
+    <!-- Menu Modal (same as before) -->
+    <div id="menuModal" aria-modal="true" role="dialog" aria-hidden="true">
+      <div class="modal" role="document">
+        <header>
+          <h3 id="menuTitle">Our Products</h3>
+          <div>
+            <button class="close-btn" id="closeMenu" aria-label="Close menu">
+              ✕ Close
+            </button>
+          </div>
+        </header>
+
+        <div
+          style="
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+          "
+        >
+          <div style="font-size: 0.95rem; color: var(--muted)">
+            Choose a price variant to add to cart. Bulk-by-cost uses the
+            bakery's formula (r = 0.4).
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center">
+            <label style="font-size: 0.95rem; color: var(--muted)"
+              >Order mode:</label
+            >
+            <select
+              id="orderMode"
+              style="
+                padding: 8px;
+                border-radius: 6px;
+                border: 1px solid #e5e7eb;
+              "
+            >
+              <option value="unit">By units (default)</option>
+              <option value="cost">Bulk-by-cost (enter total GH₵)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+
+        <div
+          style="
+            margin-top: 18px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.95rem;
+          "
+        >
+          Pickup & Delivery available. We accept Mobile Money, Card on delivery,
+          and Cash.
+        </div>
+      </div>
+    </div>
+
+    <!-- Right-side Cart Drawer (hidden until first item) -->
+    <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+      <div class="cart-header">
+        <div>
+          <strong>Your Cart</strong><br />
+          <small style="color: var(--muted)"
+            >Items saved locally. Complete order on WhatsApp.</small
+          >
+        </div>
+        <div>
+          <button id="minimizeCart" class="small-btn" title="Minimize">
+            _
+          </button>
+          <button id="clearCart" class="small-btn" title="Clear cart">
+            Clear
+          </button>
+        </div>
+      </div>
+      <div class="cart-list" id="cartList"></div>
+      <div class="total-row">
+        <div>Subtotal</div>
+        <div id="cartSubtotal">GH₵ 0.00</div>
+      </div>
+      <button class="checkout" id="checkoutBtn">
+        Complete order on WhatsApp
+      </button>
+    </div>
+
+    <!-- Minimized cart button (hidden initially) -->
+    <div
+      class="cart-min-btn"
+      id="cartMinBtn"
+      style="display: none"
+      title="Open cart"
+    >
+      <div style="position: relative">
+        🧺<span class="cart-count" id="cartCount">0</span>
+      </div>
+    </div>
+
+    <!-- Floating WhatsApp CTA -->
+    <a
+      class="whatsapp-cta"
+      href="https://wa.me/233507969291"
+      id="waCta"
+      aria-label="Order on WhatsApp"
+      ><svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M20.52 3.48a11.95 11.95 0 0 0-16.95 0c-4.68 4.68-4.67 12.27.02 16.95L2 22l1.6-2.08A11.95 11.95 0 0 0 20.52 3.48z"
+          fill="#fff"
+          opacity="0.06"
+        />
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.1-.472-.149-.672.15-.2.297-.772.967-.946 1.165-.174.199-.347.224-.644.075-.297-.149-1.255-.462-2.39-1.48-.884-.788-1.48-1.761-1.654-2.059-.174-.297-.019-.458.13-.606.134-.133.298-.347.447-.52.15-.174.2-.298.3-.497.1-.199.05-.373-.025-.522-.075-.149-.672-1.618-.92-2.218-.242-.583-.487-.503-.672-.513l-.573-.01c-.199 0-.52.074-.793.373-.273.298-1.04 1.02-1.04 2.48 0 1.459 1.064 2.875 1.213 3.074.149.199 2.095 3.2 5.077 4.487 3 .5 3.9.373 4.23.348.33-.024 1.07-.435 1.22-.86.149-.426.149-.79.105-.86-.045-.07-.168-.11-.365-.198z"
+          fill="#fff"
+        />
+      </svg>
+    </a>
+
+    <footer class="site-footer" id="contact">
+      <div class="inner">
+        <div>
+          <strong>O.A.T. Company Ltd</strong><br />Adjacent KAWSEC (Nkawkaw
+          Senior High School) Junction
+        </div>
+        <div style="text-align: right">
+          <div>
+            Call / WhatsApp:
+            <a href="tel:+233507969291" style="color: #fff">+233507969291</a>
+          </div>
+          <div
+            style="
+              margin-top: 6px;
+              font-size: 0.95rem;
+              color: rgba(255, 255, 255, 0.9);
+            "
+          >
+            Mon–Sat: 5:00 AM – 7:00 PM | Sun: 5:30 AM – 6:00 PM
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="index-script.js"></script>
+  </body>
+</html>
